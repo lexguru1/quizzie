@@ -11,3 +11,9 @@ export const incrementQnNumber = () => {
       type: "increment_qn",
     };
   };
+
+  export const reset =() =>{
+    return {
+      type:"reset",
+    }
+  }

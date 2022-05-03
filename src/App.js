@@ -2,8 +2,7 @@ import HomePage from "./pages/HomePage";
 
 function App() {
   return (
-    <div>
-      Welcomeeeeeee
+    <div className="game">
       <HomePage />
     </div>
   );

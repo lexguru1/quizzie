@@ -16,6 +16,11 @@ export default function reducer(state = initialState, action) {
         ...state,
         current_qn: state.current_qn + 1,
       };
+    case "reset":
+      return {
+        ...state,
+        current_qn: 0,
+      };
     default:
       return state;
   }
