@@ -13,16 +13,16 @@ export default function Questions(props) {
   const dispatch = useDispatch();
   const { question, current_qn } = props;
   const [show, setShow] = useState(false);
-  // const [startTimer, setStartTimer] = useState(false);
+  const [startTimer, setStartTimer] = useState(false);
 
   const handleClose = () => {
     setShow(false);
     dispatch(reset());
   };
   const handleShow = () => setShow(true);
-  // useEffect(() => {
-  //   setStartTimer(true);
-  // }, [current_qn]);
+  useEffect(() => {
+    setStartTimer(true);
+  }, [current_qn]);
   console.log(question, current_qn);
 
   return (
