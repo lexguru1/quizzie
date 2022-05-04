@@ -7,6 +7,7 @@ import { incrementQnNumber } from "../../store/users/actions";
 import { Modal, Button } from "react-bootstrap";
 import { reset } from "../../store/users/actions";
 import Timer from "../Timer";
+import "./style.scss";
 
 export default function Questions(props) {
   const [terminate, setTerminate] = useState("");
@@ -27,29 +28,27 @@ export default function Questions(props) {
 
   return (
     <>
-      <div className="main-question-wrapper container ">
-        Question wrapper
+      <div className="main-question-wrapper  row container flex-direction-row d-flex justify-content-center align-items-center">
         {/* {startTimer ? <Timer /> : ""} */}
-        <div className="question-info d-flex flex-direction-row ">
+        <div className="question-info col-12 d-flex flex-direction-row ">
           <div className="">{current_qn + 1}/15</div>
           <div className="px-5">{question.money}</div>
         </div>
-        <div className="question-container col-12 d-flex justify-content-center">
+        <div className="question-container p-5 background-blur-effect_without-background text-white col-12 d-flex justify-content-center">
           {question.Qn}
         </div>
-        {/* <div className="answer-container">{question.Ans[0].answer1}</div>
-        <div className="answer-container">{question.Ans[1].answer1}</div>
-        <div className="answer-container">{question.Ans[2].answer1}</div>
-        <div className="answer-container">{question.Ans[3].answer1}</div> */}
-        <div className="answer-container d-flex row ">
+        <div className="answer-container d-flex row justify-content-space-between">
           {question.Ans.map((value) => ({ value, sort: Math.random() }))
             .sort((a, b) => a.sort - b.sort)
             .map(({ value }) => value)
             .map((ans, index) => {
               return (
-                <div key={index} className="col-6">
+                <div
+                  key={index}
+                  className="col-6 d-flex justify-content-center"
+                >
                   <button
-                    className="m-2"
+                    className="m-2 answer-button justify-content-center background-blur-effect_without-background text-white"
                     onClick={(e) => {
                       e.preventDefault();
                       if (ans.result) {
@@ -69,14 +68,21 @@ export default function Questions(props) {
               );
             })}
           <div>
-            <Modal show={show} onHide={handleClose}>
-              <Modal.Header closeButton>
+            <Modal
+              className="background-blur-effect_without-background"
+              show={show}
+              onHide={handleClose}
+            >
+              <Modal.Header>
                 <Modal.Title>GAME OVER!</Modal.Title>
               </Modal.Header>
               <Modal.Body>Want to try again?</Modal.Body>
               <Modal.Footer>
                 <Button variant="primary" onClick={handleClose}>
                   Try again
+                </Button>
+                <Button variant="primary" onClick={handleClose}>
+                  Close
                 </Button>
               </Modal.Footer>
             </Modal>

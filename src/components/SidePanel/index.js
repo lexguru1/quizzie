@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { getCurrent_qn } from "../../store/users/selectors";
 import { useState } from "react";
-
+import "./style.scss";
 export default function SidePanel() {
   const [divColor, setDivColor] = useState("blue");
   const current_qn = useSelector(getCurrent_qn);
@@ -25,19 +25,22 @@ export default function SidePanel() {
   ];
   return (
     <div>
-      SidePanel
       <div>
         {panel.reverse().map((score, index) => {
           return (
             <div
               key={index}
-              className={score.Qn === current_qn + 1 ? "highlighted" : ""}
+              className={
+                score.Qn === current_qn + 1
+                  ? "highlighted border my-3 px-3 py-1 "
+                  : "border my-3 px-3 py-1"
+              }
             >
               {/* {score.Qn === current_qn + 1
                 ? setDivColor("yellow")
                 : setDivColor("blue")} */}
-              <span>{score.Qn}</span>
-              <span className="px-5">{score.Money}</span>
+              <span className="text-white">{score.Qn}</span>
+              <span className="px-5 text-white">{score.Money}</span>
             </div>
           );
         })}
